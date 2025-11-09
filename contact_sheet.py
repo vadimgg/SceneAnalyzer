@@ -19,12 +19,13 @@ def create_contact_sheet(scene_data, output_path: str,
 
     images = []
     for s in scene_data:
-        img = Image.open(s["image"]).convert("RGB")
-        w, h = img.size
-        scale = max_width / w
-        img = img.resize((int(w * scale), int(h * scale)), Image.Resampling.LANCZOS)
-        label = f"Scene {s['num']} – {s['start']} – {s['duration']}s"
-        images.append((img, label))
+        for img_path in s["images"]:
+            img = Image.open(img_path).convert("RGB")
+            w, h = img.size
+            scale = max_width / w
+            img = img.resize((int(w * scale), int(h * scale)), Image.Resampling.LANCZOS)
+            label = f"Scene {s['num']} – {s['start']} – {s['duration']}s"
+            images.append((img, label))
 
     rows = math.ceil(len(images) / cols)
     max_heights = [max(img[0].height for img in images[r * cols:(r + 1) * cols]) for r in range(rows)]
