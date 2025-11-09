@@ -1,0 +1,77 @@
+
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# Virtual environments
+.venv/
+env/
+venv/
+.scenedetect_env/
+conda_env/
+*.conda
+*.yaml
+
+# -------------------------
+# OS / Editor Files
+# -------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+*.tmp
+.idea/
+.vscode/
+*.log
+
+# -------------------------
+# VideoAnalyzer Generated Files
+# -------------------------
+# Scene detection outputs
+*_scenes/
+*_sheet.jpg
+*_sheet.png
+*_composition.jpg
+*_composition_sheet.jpg
+
+# Temporary working dirs
+composition_*/
+temp_*/
+tmp_*/
+.cache/
+*.tmp/
+
+# Downloaded videos
+*.mp4
+*.mov
+*.mkv
+*.webm
+
+# Frames / extracted images
+frame_*.jpg
+frame_*.png
+scene_*.jpg
+scene_*.png
+
+# -------------------------
+# OS / System
+# -------------------------
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# -------------------------
+# Jupyter / Notebooks (if used)
+# -------------------------
+.ipynb_checkpoints/
+*.ipynb
