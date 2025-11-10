@@ -21,7 +21,7 @@ def detect_scenes(video_path, threshold=30.0):
 
 
 def extract_scene_frames(video_path, scene_list, output_dir):
-    """Extract 3 frames (start, middle, end) from each scene."""
+    """Extract 3 frames (start, middle, end) from each scene, including duration."""
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -36,6 +36,7 @@ def extract_scene_frames(video_path, scene_list, output_dir):
         end_frame = end.get_frames() - 1
         mid_frame = (start_frame + end_frame) // 2
 
+        duration = round(end.get_seconds() - start.get_seconds(), 1)  # in seconds
         frames_to_capture = [start_frame, mid_frame, end_frame]
         frame_paths = []
 
@@ -51,7 +52,8 @@ def extract_scene_frames(video_path, scene_list, output_dir):
             timestamp = FrameTimecode(frame_num, fps).get_timecode()
             frame_paths.append((frame_file, timestamp))
 
-        scene_data.append((i, frame_paths))
+        # include duration here
+        scene_data.append((i, frame_paths, duration))
 
     cap.release()
     return scene_data
